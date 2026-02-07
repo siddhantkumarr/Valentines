@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Mrs Bihari ❤️</title>
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Segoe UI', sans-serif;
+  color: white;
+  overflow: hidden;
+}
+
+.card {
+  background: rgba(255,255,255,0.2);
+  padding: 40px;
+  border-radius: 22px;
+  text-align: center;
+  max-width: 420px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+}
+
+h1 { font-size: 2.4rem; }
+p { font-size: 1.15rem; line-height: 1.6; }
+
+button {
+  padding: 12px 32px;
+  border: none;
+  border-radius: 30px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin: 10px;
+}
+
+.yes {
+  background: white;
+  color: #ff4d6d;
+}
+
+.no {
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+  position: relative;
+}
+
+/* HEARTS */
+.heart {
+  position: absolute;
+  bottom: -20px;
+  font-size: 20px;
+  animation: floatUp 6s linear infinite;
+}
+
+@keyframes floatUp {
+  from { transform: translateY(0); opacity: 1; }
+  to { transform: translateY(-100vh); opacity: 0; }
+}
+
+/* SECRET */
+.secret {
+  display: none;
+  margin-top: 20px;
+}
+
+input {
+  padding: 10px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card" id="mainCard">
+  <h1>Hey Mrs Bihari ❤️</h1>
+  <p>
+    From random smiles to endless talks,<br>
+    you make my world softer 💫<br><br>
+    You are my comfort, my chaos, and my calm.
+  </p>
+
+  <h2>Will you be my Valentine? 💖</h2>
+
+  <button class="yes" onclick="yesClick()">Yes 🥰</button>
+  <button class="no" onmouseover="moveNo()">No 😌</button>
+</div>
+
+<script>
+function yesClick() {
+  document.getElementById("mainCard").innerHTML = `
+    <h1>YAYYYY 💕</h1>
+    <p>
+      Bhondu loves you ❤️<br><br>
+      Mrs Bihari & Me — Valentine Edition 💖<br><br>
+      Always yours,<br>
+      — From Bhondu 🫶
+    </p>
+
+    <p>🔐 Enter password to unlock a secret</p>
+    <input type="password" id="pass" placeholder="Hint: Shampoo 😉">
+    <button onclick="checkPass()">Unlock 💌</button>
+
+    <div class="secret" id="secretMsg">
+      <p>
+        You’re my safest place, my favorite person,<br>
+        and my forever choice 💕
+      </p>
+    </div>
+  `;
+}
+
+function checkPass() {
+  const p = document.getElementById("pass").value;
+  if (p === "Shampoo") {
+    document.getElementById("secretMsg").style.display = "block";
+  } else {
+    alert("Wrong password 😌");
+  }
+}
+
+function moveNo() {
+  const btn = document.querySelector('.no');
+  btn.style.transform =
+    `translate(${Math.random()*200-100}px,${Math.random()*200-100}px)`;
+}
+
+/* HEART GENERATOR */
+setInterval(() => {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerText = "❤️";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = Math.random()*20 + 15 + "px";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 6000);
+}, 400);
+</script>
+
+</body>
+</html>
